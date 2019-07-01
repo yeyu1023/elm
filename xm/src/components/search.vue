@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div class="hello">
     <!-- 底部 -->
     <div id="nav">
@@ -82,8 +82,8 @@
         <p>搜索历史</p>
       </div>
       <li class="li2" :key="i" v-for="(v,i) in shops">
-        <span>{{shops[i]}}</span>
-        <span @click="addb()" class="span1">x</span>
+        <span class="span2" @click="getgeoadd(v)">{{v}}</span>
+         <span @click="dsadd(i)" class="span1">x</span>
       </li>
       <li class="li3" @click="addc()">
         <p class="p6">清空历史搜索</p>
@@ -112,6 +112,7 @@ export default {
   },
 
   created() {
+  this.dsadd();
     console.log(this.$store.state.cityToWaimai_geohash);
     // console.log(this.$store.state.cityToWaimai_geohash.split(",")[0]);
     // console.log(this.$store.state.cityToWaimai_geohash.split(",")[1]);
@@ -216,8 +217,76 @@ export default {
       }
     },
     //单项删除历史记录
-    addb() {
-      console.log(1);
+     dsadd(i) {
+    console.log(this.shops);
+    if (this.shops.length == 0) {
+      return;
+    }else{
+       localStorage.removeItem("shop");
+       for (let j = 0; j < this.shops.length; j++) {
+         if (i!=j) {
+           if ( localStorage.shop &&
+              localStorage.shop.indexOf(this.shops[j]) == -1) {
+              localStorage.shop += "," + this.shops[j];
+           }else{ 
+             localStorage.shop = this.shops[j];
+             }
+         }
+       }
+    }
+      if (this.shops.length == 1) {
+          this.shops = localStorage.shop;
+          this.ul = false;
+        } else {
+          this.shops = localStorage.shop.split(",");
+        }
+      
+        console.log(this.shop.length);
+    },
+    getgeoadd(v){
+       this.shop = v;
+      const api =
+        "https://elm.cangdu.org/v4/restaurants?geohash=" +
+        this.$store.state.geohasha[this.$store.state.xiabiaoId].geohash +
+        "&keyword=" +
+        this.shop;
+      this.$http({
+        url: api,
+        method: "get",
+        data: {
+          //post的请求方式
+        }
+      }).then(res => {
+        //请求返回的数据res
+        console.log(res);
+        this.sp = true;
+        // this.sj= false;
+        this.sj = !this.sj;
+        this.ul = false;
+        this.content = res.data;
+
+        //本地存储  历史记录
+        if (localStorage.shop) {
+          if (localStorage.shop.indexOf(this.shop) == -1) {
+            localStorage.shop += "," + this.shop;
+          }
+        } else {
+          localStorage.shop = this.shop;
+        }
+       
+          this.shops = localStorage.shop.split(",");
+        
+        console.log(this.shops.length);
+        if (
+          this.content.message == "搜索餐馆数据失败" ||
+          this.content.length == 0
+        ) {
+          this.show = true;
+          this.sj = false;
+          this.ul = false;
+        }
+         
+      });
     }
   }
 };
@@ -353,10 +422,16 @@ export default {
   line-height: 0.5rem;
   /* border-bottom: 0.01rem solid black; */
 }
+.span2{
+  width: 80%;
+}
 .span1 {
-  position: fixed;
+   width: 10%;
+  float: right;
+  overflow: hidden;
+  /* position: fixed; */
   font-size: 0.2rem;
-  margin-left: 3.2rem;
+  /* margin-left: 3.2rem; */
   font-weight: bold;
 }
 .p5 {
