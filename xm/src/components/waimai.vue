@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div class="hello">
     <!-- 底部四栏固定部分 -->
     <div id="nav">
@@ -30,7 +30,7 @@
       </ul>
     </div>
     <div class="top">
-      <img id="img1" @click="goBack()" src="../../static/img/fangdajing.png" alt>
+      <img id="img1" @click="tosearch()" src="../../static/img/fangdajing.png" alt>
       <p class="p1">{{cityName}}</p>
       <router-link :to="'/mine?'"></router-link>
       <img v-if="!bool" id="img2" src="../../static/img/imgs/wd1.png" alt>
@@ -167,13 +167,11 @@ export default {
       }
     };
   },
-  methods: {
-    goBack() {
-      // 返回上一个历史记录
-      // this.$router.go(-1);
-      // 或者
-      this.$router.back();
-    },
+  methods: {tosearch() {
+this.$router.push({
+name:'search'
+});
+},
     jiazaiOKtop1() {
       const api = "https://elm.cangdu.org/v2/index_entry";
       this.$http({
