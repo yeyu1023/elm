@@ -30,7 +30,7 @@
       </ul>
     </div>
     <div class="top">
-      <img id="img1" @click="goBack()" src="../../static/img/fangdajing.png" alt>
+      <img id="img1" @click="tosearch()" src="../../static/img/fangdajing.png" alt>
       <p class="p1">{{cityName}}</p>
       <router-link :to="'/mine?'"></router-link>
       <img v-if="!bool" id="img2" src="../../static/img/imgs/wd1.png" alt>
@@ -116,7 +116,7 @@
               ></el-rate>
               <br>
               <br>
-              <span>月售{{v.recent_order_num}}单</span>
+              <span style="font-size:0.1rem;">月售{{v.recent_order_num}}单</span>
             </h5>
             <h5 style="margin-bottom:0.1rem;">
               <!-- 起送 -->
@@ -168,11 +168,11 @@ export default {
     };
   },
   methods: {
-    goBack() {
-      // 返回上一个历史记录
-      // this.$router.go(-1);
-      // 或者
-      this.$router.back();
+    tosearch() {
+      this.$router.push({
+        name:'search'
+      });
+      console.log("1111");
     },
     jiazaiOKtop1() {
       const api = "https://elm.cangdu.org/v2/index_entry";
@@ -182,7 +182,7 @@ export default {
         withCredentials: true //用于表示用户代理是否应该在跨域请求的情况下，从其他域发送cookies---不使用缓存数据（不加这行代码，验证码可能会使用上次的）
       }).then(res => {
         //  加载完成，取消加载动画
-        loadingInstance.close();
+        // loadingInstance.close();
         // console.log("加载完页面，请求的外面数据");
         // console.log(res.data);
         this.foodData1 = res.data;
@@ -222,11 +222,11 @@ export default {
   },
   created() {
     // 正在加载动画效果
-    loadingInstance = Loading.service({
-      fullscreen: true,
-      text: "正在加载",
-      spinner: "el-icon-loading"
-    });
+    // loadingInstance = Loading.service({
+    //   fullscreen: true,
+    //   text: "正在加载",
+    //   spinner: "el-icon-loading"
+    // });
     if (this.$route.query) {
       this.bool = true;
     } else {
@@ -268,7 +268,6 @@ export default {
   //   stateCityZB() {
   //     return this.$store.state.locationCityZB;
   //   },
-    
   // }
 };
 </script>
