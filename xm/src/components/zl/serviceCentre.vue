@@ -1,4 +1,4 @@
-<template>
+﻿<template>
     <div>
       <div id="top">
             <img @click="ret()" src="../../../static/img/back.png" alt="">
@@ -380,7 +380,7 @@ export default {
 </script>
 <style scoped>
 #top{
-width: 3.75rem;
+width: 100%;
 height: 0.53rem;
 line-height: 0.53rem;
 background-color: rgb(49, 144, 232);
