@@ -7,18 +7,18 @@
           style="width:0.6rem;vertical-align:top;float:left"
           :src="'https://elm.cangdu.org/img/'+shangpu[datas.detail].image_path"
           alt
-        >
-        <img @click="houtui()" id="top_img1" src="../../static/img/back.png" alt>
+        />
+        <img @click="houtui()" id="top_img1" src="../../static/img/back.png" alt />
         <span style="color:white;margin-left:2%">{{shangpu[datas.detail].name}}</span>
-        <br>
+        <br />
         <div
           style="color:white;font-size:0.1rem;float:left;width:70%;margin-left:2%;line-height:0.2rem;;margin-top:2%;"
         >
           <span>商家配送 / 分钟送达 / {{shangpu[datas.detail].piecewise_agent_fee.tips}}</span>
-          <br>公告：
+          <br />公告：
           <span>{{shangpu[datas.detail].promotion_info}}</span>
         </div>
-        <img style="width:5%" src="../../static/img/you.png" alt>
+        <img style="width:5%" src="../../static/img/you.png" alt />
       </div>
     </router-link>
     <!-- 商品 评价   分类 -->
@@ -40,18 +40,27 @@
     <div id="content" v-if="shangpin">
       <div id="left">
         <div>
-          <div :class="{left_item_T:yangshi==i}" @click="changeYS(i)" :ref="'ys'+i" class="left_item" :key="i" v-for="(v,i) in shipin">
+          <!-- 左侧的食品栏目 -->
+          <div
+            :class="{left_item_T:yangshi==i}"
+            @click="changeYS(i)"
+            :ref="'ys'+i"
+            class="left_item"
+            :key="i"
+            v-for="(v,i) in shipin"
+          >
             <a style="color:black;" :href="'#B'+i">
               <p class="p1">{{v.name}}</p>
             </a>
           </div>
         </div>
       </div>
+      <!-- 右侧食品列表 -->
       <div id="right">
         <div>
           <div :id="'B'+i" :key="i" v-for="(v,i) in shipin">
             <div
-              style="height:0.5rem;line-height:0.5rem;font-size:0.1rem;background-color:rgb(168,173,182)"
+              style="height:0.5rem;line-height:0.5rem;font-size:0.1rem;"
             >
               <span style="font-size:0.2rem;font-weight:bold;">{{v.name}}</span>
               {{v.description}}
@@ -62,19 +71,18 @@
                 style="width:0.5rem;vertical-align:top;"
                 :src="'https://elm.cangdu.org/img/'+value.image_path"
                 alt
-              >
+              />
               <div style="display:inline-block;width:70%;">
-                <span>{{value.name}}</span>
+                <span style="font-size:0.17rem;font-weight:bold;">{{value.name}}</span>
                 <span
-                  style="display:inline-block;float:right;"
+                  style="display:inline-block;float:right;color:red;font-size:0.1rem;border:1px solid red;border-radius:25% 25% 25% 25% / 50% 50% 50% 50%;padding:1px;"
                   v-if="value.attributes[1]"
                 >{{value.attributes[1].icon_name}}</span>
-                <br>
-                <span>{{value.description}}</span>
-                <br>
-                <span>月售{{value.month_sales}}份</span>
-                <span>好评率{{value.satisfy_rate}}%</span>
-                <span>￥{{value.specfoods[0].price}}</span>
+                <br />
+                <span style="margin-top:4px;display:inline-block;font-size:0.1rem;color:rgb(125,125,125);">{{value.description}}</span>
+                <br />
+                <span style="margin-top:4px;display:inline-block;">月售{{value.month_sales}}份 好评率{{value.satisfy_rate}}%</span>
+                <span style="margin-top:4px;display:inline-block;color:red;font-weight:bold;">￥{{value.specfoods[0].price}}</span>
                 <!-- 添加删减购物车内容  传菜品价钱 -->
                 <div
                   style="float:right;display:inline-block;border-radius:50%;height:0.2rem;text-align:center;color:white;font-size:0.2rem;"
@@ -98,7 +106,7 @@
       <!-- 底部 -->
       <div id="bottom">
         <div id="bottom_img">
-          <img src="../../static/img/gouwuche.png" alt>
+          <img src="../../static/img/gouwuche.png" alt />
           <span>{{foodCount}}</span>
         </div>
         <!-- 价钱 -->
@@ -131,18 +139,18 @@
         <div id="pingjia_top_left">
           <p id="pingjia_top_left_p1">4.7</p>
           <span style="font-size:0.2rem;">综合评价</span>
-          <br>
+          <br />
           <span style="font-size:0.1rem;">高于周边商家76.9%</span>
         </div>
         <div id="pingjia_top_right" style="margin-left:1rem;">
           <span style="font-size:0.13rem;">服务态度</span>
           <el-rate v-model="value1" disabled show-score text-color="#ff9900" style="display:inline"></el-rate>
-          <br>
-          <br>
+          <br />
+          <br />
           <span style="font-size:0.13rem;">菜品评价</span>
           <el-rate v-model="value1" disabled show-score text-color="#ff9900" style="display:inline"></el-rate>
-          <br>
-          <br>
+          <br />
+          <br />
           <span style>送达时间</span>
           <span style="font-size:0.05rem;">分钟</span>
         </div>
@@ -166,15 +174,15 @@
         <div id="pjList">
           <div class="pjJiekouA" :key="i" v-for="(v,i) in pjJiekou">
             <div style="overflow:hidden;width:0.6rem;border-radius:50%;display:inline-block;">
-              <img style="width:0.6rem;vertical-align:top" src="../../static/img/pj.jpg" alt>
+              <img style="width:0.6rem;vertical-align:top" src="../../static/img/pj.jpg" alt />
             </div>
             <div class="pjList_right">
               <span>{{v.username}}</span>
               <span style="float:right;">{{v.rated_at}}</span>
-              <br>
+              <br />
               <el-rate v-model="pingfen" disabled text-color="#ff9900" style="display:inline"></el-rate>
-              <br>
-              <br>
+              <br />
+              <br />
               <!-- 已购餐品名称 -->
               <span
                 style="width:5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"
@@ -213,14 +221,14 @@ export default {
       prices: [], //
       colors: ["#99A9BF", "#F7BA2A", "#FF9900"], // 等同于 { 2: '#99A9BF', 4: { value: '#F7BA2A', excluded: true }, 5: '#FF9900' }
       shopshow: false, //购物车显示与否
-      yangshi:-1,//改变商品栏目的样式
+      yangshi: -1 //改变商品栏目的样式
     };
   },
   methods: {
     // goAnchor, //方法
     // GetQueryString, //方法
     // 点击商品栏目改变样式
-    changeYS(i){
+    changeYS(i) {
       this.yangshi = i;
     },
     houtui() {
@@ -371,6 +379,7 @@ export default {
   top: 0;
   left: 0;
   background-color: rgb(168, 173, 182);
+  
   padding: 0.1rem;
   color: black;
   box-sizing: border-box;
@@ -419,12 +428,13 @@ export default {
   overflow-y: scroll;
   box-sizing: border-box;
 }
-.left_item{
-  border: 1px solid black;
+.left_item {
+  /* border: 1px solid black; */
   height: 0.5rem;
+  border-bottom: 1px solid rgb(225, 225, 245);
 }
 /* 点击显示的样式 */
-.left_item_T{
+.left_item_T {
   background-color: white;
   font-weight: bold;
   border-left: 3px solid blue;
@@ -447,6 +457,8 @@ export default {
 .right_content {
   height: 1rem;
   padding: 0.13rem;
+  background-color: white;
+  border-bottom: 1px solid rgb(225, 225, 245);
   box-sizing: border-box;
 }
 #bottom {
