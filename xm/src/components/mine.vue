@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div class="hello">
       <div class="top">
        <p class="p1"><router-link to="/city">
@@ -23,9 +23,9 @@
            <p id="phone" class="el-icon-mobile"></p>
         <p id="iph">暂无绑定的手机号</p>
         </div>
-          <router-link to="/zhanghu">
-          <img id="go"  src="../assets/iconfontjiantou2.png" alt="">
-          </router-link>
+          
+          <img @click="getFont()" id="go"  src="../assets/iconfontjiantou2.png" alt="">
+  
         
         </div>
     </div>
