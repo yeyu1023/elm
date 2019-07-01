@@ -42,17 +42,20 @@
          </li>
          <li>
           <router-link to="/youhui">
-           <p style="color: red;
-  font-size: 0.25rem;  font-weight: bold;">{{share}}<span style="color: gray;
+       
+           
+           <p @click="getFont()" style="color: red;
+  font-size: 0.25rem;  font-weight: bold;">{{share||0}}<span style="color: gray;
   font-size: 0.1rem;">个</span></p>
+       
            <p style="color: gray;
   font-size: 0.1rem;margin-top: 5%;">我的优惠</p>
           </router-link>
          </li>
         <li>
           <router-link to="/jifen">
-           <p style="color: green;
-  font-size: 0.25rem;  font-weight: bold;">{{this.$store.state.userMsg.point}}<span style="color: gray;
+           <p @click="getFont()" style="color: green;
+  font-size: 0.25rem;  font-weight: bold;">{{this.$store.state.userMsg.point||0}}<span style="color: gray;
   font-size: 0.1rem;">分</span></p>
            <p style="color: gray;
   font-size: 0.1rem;margin-top: 5%;">我的积分</p>
@@ -84,7 +87,6 @@
      
     <div id="main_bot">
       <ul id="ul3">
-       
         <router-link to="/serviceCentre">
         <li>
           <img src="../../static/img/服务中心 (1).png" alt="">
@@ -92,7 +94,6 @@
         <img src="../../static/img/iconfontjiantou2.png" alt="">
        </li>
         </router-link>
-        
         <router-link to="/downLoad">
         <li>
           <img src="../../static/img/elm.jpg" alt="">
@@ -134,23 +135,21 @@ export default {
        user:'',
       username:'登陆/注册',
        img1:'',
-       show:true,
+      //  show:true,
        img2:'',
        yes:true,
-       share:''
-      
+       share:'',
+       down:true,
+       downIt:'' 
     }
   },
   created(){
-    console.log(this.$store.state.cityToWaimai_geohash);
-    // console.log(this.$store.state.cityToWaimai_geohash.split(",")[0]);
-    // console.log(this.$store.state.cityToWaimai_geohash.split(",")[1]);
      this.user = this.$store.state.userMsg.username
      this.share = this.$store.state.userMsg.gift_amount
      console.log(this.share)
     this.getImg();
     this.img1 = this.$store.state.imgavatar
-   this.getDatas();
+  //  this.getDatas();
     console.log(this.username)
   },
   methods: {
@@ -169,23 +168,23 @@ export default {
          })
         },
         //获取头像
-  //  getUser(){
-  //    if(username == this.$store.state.userMsg.username){
-  //      this.$router.push({path:'zhanghu'})
+   getUser(){
+     if(username == this.$store.state.userMsg.username){
+       this.$router.push({path:'zhanghu'})
       
-  //    }else{
-  //      this.$router.push({path:'register'})
-  //    }
-  //  },
-   sure(){
-     this.show = !show
+     }else{
+       this.$router.push({path:'register'})
+     }
    },
+  //  sure(){
+  //    this.show = !show
+  //  },
    sure2(){
            this.yes = !this.yes
    },
    getFont(){
      if(this.user){
-        this.show = false
+        // this.show = false
         this.$router.push({
           name: "zhanghu"  
         })
