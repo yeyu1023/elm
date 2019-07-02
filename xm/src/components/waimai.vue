@@ -12,8 +12,8 @@
         <li>
           <router-link to="/search">
             <img src="../../static/img/zhinanzhen.png" alt>
+            <P style="font-size:0.1rem;color:grey;">搜索</P>
           </router-link>
-          <P style="font-size:0.1rem;color:grey;">搜索</P>
         </li>
         <li>
           <router-link to="/dingdan">
