@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div class="hello">
     <!-- 头部 -->
     <router-link :to="'/shopDetail?id='+datas.id">
@@ -367,7 +367,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .hello {
   text-align: left;
   color: black;

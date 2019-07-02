@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div class="hello">
     <div class="top">
       <img id="img1" @click="goBack()" src="../../static/img/back.png" alt>
@@ -63,7 +63,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .hello {
   text-align: left;
   color: black;

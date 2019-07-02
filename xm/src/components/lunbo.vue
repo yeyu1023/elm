@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div>
     <div id="head">
       <!-- <img id="head_left" src="../../../static/imgs/fangdajing.png" alt> -->
@@ -106,7 +106,7 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped>
 #head {
   width: 100%;
   height: 0.4rem;
