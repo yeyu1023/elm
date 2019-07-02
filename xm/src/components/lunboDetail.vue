@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div class="hello">
     <div class="top">
       <img id="back" @click="houtui()" src="../../static/img/back.png" alt>
@@ -562,8 +562,8 @@ export default {
     // 从store里获取定位到的城市坐标
     var a = this.stateCityZB;
     // console.log(a);
-    this.latitude = a.split(",")[0];
-    this.longitude = a.split(",")[1];
+    this.latitude = this.$store.state.cityToWaimai_latitude;
+    this.longitude = this.$store.state.cityToWaimai_longitude;
     // 加载完从接口获得数据
     this.jiazaiOKtop2();
     var img1 = document.getElementById("img1");
