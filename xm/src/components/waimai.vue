@@ -96,20 +96,20 @@
               <span>品牌</span>
               {{v.name}}
               <ul class="ul1">
-                <li :key="index" v-for="(value,index) in v.supports">{{value.icon_name}}</li>
+                <li style="font-size:0.1rem;" :key="index" v-for="(value,index) in v.supports">{{value.icon_name}}</li>
               </ul>
             </h4>
-            <h5 style="margin-bottom:0.1rem;">
+            <h5 style="margin-bottom:0.1rem;font-size:0.1rem;">
               <!-- 评分 -->
               <span
-                style="color:#57A9FF;float:right;padding:0.03rem;margin-left:0.08rem"
+                style="color:#57A9FF;float:right;padding:0.02rem;margin-left:0.08rem;border:1px solid #57A9FF"
               >{{v.supports[1].name}}</span>
               <span
                 style="background:#57A9FF;color:white;float:right;padding:0.03rem;"
               >{{v.delivery_mode.text}}</span>
               <van-rate style="display:inline-block" v-model="v.rating" size="10px" allow-half="true" />
-              <span style="font-size:0.1rem;color:red;"> {{v.rating}}</span>
-              <span style="font-size:0.1rem;"> 月售{{v.recent_order_num}}单</span>
+              <span style="color:red;"> {{v.rating}}</span>
+              <span> 月售{{v.recent_order_num}}单</span>
             </h5>
             <h5 style="margin-bottom:0.1rem;">
               <!-- 起送 -->
