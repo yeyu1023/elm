@@ -107,16 +107,9 @@
               <span
                 style="background:#57A9FF;color:white;float:right;padding:0.03rem;"
               >{{v.delivery_mode.text}}</span>
-              <el-rate
-                v-model="v.rating"
-                disabled
-                text-color="#ff9900"
-                style="display:inline"
-                show-score
-              ></el-rate>
-              <br>
-              <br>
-              <span style="font-size:0.1rem;">月售{{v.recent_order_num}}单</span>
+              <van-rate style="display:inline-block" v-model="v.rating" size="10px" allow-half="true" />
+              <span style="font-size:0.1rem;color:red;"> {{v.rating}}</span>
+              <span style="font-size:0.1rem;"> 月售{{v.recent_order_num}}单</span>
             </h5>
             <h5 style="margin-bottom:0.1rem;">
               <!-- 起送 -->

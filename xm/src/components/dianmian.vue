@@ -138,20 +138,18 @@
       <div id="pingjia_top">
         <div id="pingjia_top_left">
           <p id="pingjia_top_left_p1">4.7</p>
-          <span style="font-size:0.2rem;">综合评价</span>
+          <span style="font-size:0.15rem;">综合评价</span>
           <br />
           <span style="font-size:0.1rem;">高于周边商家76.9%</span>
         </div>
         <div id="pingjia_top_right" style="margin-left:1rem;">
-          <span style="font-size:0.13rem;">服务态度</span>
-          <el-rate v-model="value1" disabled show-score text-color="#ff9900" style="display:inline"></el-rate>
-          <br />
-          <br />
-          <span style="font-size:0.13rem;">菜品评价</span>
-          <el-rate v-model="value1" disabled show-score text-color="#ff9900" style="display:inline"></el-rate>
-          <br />
-          <br />
-          <span style>送达时间</span>
+          <span style="font-size:0.13rem;line-height:0.2rem;display:inline-block;margin-top:0.1rem;">服务态度</span>
+          <van-rate style="display:inline-block;line-height:0.22rem;" v-model="value1" size="10px" allow-half="true" />
+          <span style="color:orange;"> {{value1}}</span><br>
+          <span style="font-size:0.13rem;line-height:0.2rem;">菜品评价</span>
+          <van-rate style="display:inline-block;line-height:0.22rem;" v-model="value2"  size="10px" allow-half="true" />
+          <span style="color:orange;"> {{value1}}</span><br>
+          <span style="display:inline-block;line-height:0.22rem;">送达时间</span>
           <span style="font-size:0.05rem;">分钟</span>
         </div>
       </div>
@@ -494,11 +492,13 @@ export default {
   overflow: hidden;
 }
 #pingjia_top_left {
+  width: 40%;
   float: left;
   text-align: center;
 }
 #pingjia_top_left_p1 {
-  font-size: 0.4rem;
+  margin-top: 0.1rem;
+  font-size: 0.3rem;
   color: red;
 }
 #pjContent {
@@ -534,7 +534,7 @@ export default {
 }
 .pjList_right {
   float: right;
-  width: 80%;
+  /* width: 80%; */
   display: inline-block;
   /* border: 1px solid black; */
   /* height: 0.8rem; */

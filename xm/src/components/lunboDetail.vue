@@ -1,4 +1,4 @@
-﻿<template>
+<template>
   <div class="hello">
     <div class="top">
       <img id="back" @click="houtui()" src="../../static/img/back.png" alt>
@@ -207,8 +207,9 @@
               <span
                 style="background:#57A9FF;color:white;float:right;padding:0.03rem;"
               >{{v.delivery_mode.text}}</span>
-              <el-rate v-model="v.rating" disabled text-color="#ff9900" style="display:inline" show-score></el-rate><br>
-              <br><span style="">月售{{v.recent_order_num}}单</span>
+              <van-rate style="display:inline-block" v-model="v.rating" size="10px" allow-half="true" />
+              <span style="font-size:0.1rem;color:red;"> {{v.rating}}</span>
+              <span style="font-size:0.1rem;"> 月售{{v.recent_order_num}}单</span>
             </h5>
             <h5 style="margin-bottom:0.05rem;">
               <!-- 起送 -->
@@ -242,7 +243,6 @@ export default {
       clientHeight:"",//当前屏幕宽高度
     };
   },
-  watch: {},
   methods: {
     houtui() {
       this.$router.back();
@@ -553,10 +553,10 @@ export default {
       console.log(this.show1);
       // this.$router.go(0);
     },
-    changeFixed(clientHeight){ //动态修改样式
-      console.log(clientHeight);
-      this.$refs.homePage.style.height = clientHeight+'px';
-    },
+    // changeFixed(clientHeight){ //动态修改样式
+    //   console.log(clientHeight);
+    //   this.$refs.homePage.style.height = clientHeight+'px';
+    // },
   },
   created() {
     // 从store里获取定位到的城市坐标
@@ -583,20 +583,20 @@ export default {
       return this.$store.state.locationCityZB;
     }
   },
-  mounted(){
-    // 获取浏览器可视区域高度
-    this.clientHeight = `${document.documentElement.clientHeight || document.body.clientHeight}` //document.body.clientWidth;
-    //console.log(self.clientHeight);
-    window.onresize = function temp() {
-      this.clientHeight = `${document.documentElement.clientHeight || document.body.clientHeight}`;
-    };
-  },
-  watch: {
-    // 如果 `clientHeight` 发生改变，这个函数就会运行
-    clientHeight: function () {
-      this.changeFixed(this.clientHeight)
-    }
-  },
+  // mounted(){
+  //   // 获取浏览器可视区域高度
+  //   this.clientHeight = `${document.documentElement.clientHeight || document.body.clientHeight}` //document.body.clientWidth;
+  //   //console.log(self.clientHeight);
+  //   window.onresize = function temp() {
+  //     this.clientHeight = `${document.documentElement.clientHeight || document.body.clientHeight}`;
+  //   };
+  // },
+  // watch: {
+  //   // 如果 `clientHeight` 发生改变，这个函数就会运行
+  //   clientHeight: function () {
+  //     this.changeFixed(this.clientHeight)
+  //   }
+  // },
 }
 </script>
 
