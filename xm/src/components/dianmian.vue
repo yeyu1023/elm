@@ -8,7 +8,7 @@
           :src="'https://elm.cangdu.org/img/'+shangpinDetail.image_path"
           alt
         />
-        <img @click="houtui()" id="top_img1" src="../../static/img/back.png" alt />
+        <img style="width:0.3rem;position:fixed;left:0.01rem;top:0.01rem;" @click="houtui()" id="top_img1" src="../../static/img/back.png" alt />
         <span style="color:white;margin-left:2%">{{shangpinDetail.name}}</span>
         <br />
         <div
