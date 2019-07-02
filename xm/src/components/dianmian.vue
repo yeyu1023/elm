@@ -357,6 +357,9 @@ export default {
     // 上一个页面传来的数据（坐标）
     console.log(this.$route.query);
     this.datas = this.$route.query;
+    if(this.datas.detail == null){
+      this.$set(datas,'detail',0)
+    }
     // this.getParmas();
     this.jiazaiOKtop1();
     this.jiazaiOKtop2();
