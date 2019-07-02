@@ -11,9 +11,9 @@
         </li>
         <li>
           <router-link to="/search">
-            <img src="../../static/img/指南针 (6).png" alt>
-          <P style="font-size:0.1rem;color:grey;">搜索</P>
+            <img src="../../static/img/zhinanzhen.png" alt>
           </router-link>
+          <P style="font-size:0.1rem;color:grey;">搜索</P>
         </li>
         <li>
           <router-link to="/dingdan">
@@ -77,6 +77,7 @@
         <div class="swiper-scrollbar" slot="scrollbar"></div>
       </swiper>
     </div>
+
     <!-- 下面商铺部分 -->
     <div id="sps_top">
       <img src="../../static/img/Group-.png">附近商家
@@ -207,7 +208,7 @@ export default {
         method: "get",
         withCredentials: true //用于表示用户代理是否应该在跨域请求的情况下，从其他域发送cookies---不使用缓存数据（不加这行代码，验证码可能会使用上次的）
       }).then(response => {
-        // console.log(response.data);
+        console.log(response.data);
         this.shangpu = response.data;
       });
     },

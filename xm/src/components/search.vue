@@ -11,7 +11,7 @@
         </li>
         <li>
           <router-link to="/search">
-            <img src="../../static/img/指南针 (4).png" alt="">
+            <img src="../../static/img/zhinanzhen1.png" alt="">
             <P style="font-size:0.1rem;color:grey;">搜索</P>
           </router-link>
         </li>
@@ -56,7 +56,7 @@
     <div class="bottom">
       <ul v-if="sp">
         <li class="li1" :key="i" v-for="(v,i) in content">
-          <router-link tag="p" :to="'/shop?id='+v.id">
+          <router-link tag="p" :to="'/dianmian?id='+v.id">
             <img class="img1" :src="'https://elm.cangdu.org/img/'+v.image_path" alt />
             <div class="bottom1">
               <p class="lip1">{{v.name}}</p>
@@ -294,6 +294,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+* {
+  margin: 0;
+  padding: 0;
+}
 .top {
   position: fixed;
   width: 100%;

@@ -5,18 +5,18 @@
       <div id="top">
         <img
           style="width:0.6rem;vertical-align:top;float:left"
-          :src="'https://elm.cangdu.org/img/'+shangpu[datas.detail].image_path"
+          :src="'https://elm.cangdu.org/img/'+shangpinDetail.image_path"
           alt
         />
         <img @click="houtui()" id="top_img1" src="../../static/img/back.png" alt />
-        <span style="color:white;margin-left:2%">{{shangpu[datas.detail].name}}</span>
+        <span style="color:white;margin-left:2%">{{shangpinDetail.name}}</span>
         <br />
         <div
           style="color:white;font-size:0.1rem;float:left;width:70%;margin-left:2%;line-height:0.2rem;;margin-top:2%;"
         >
-          <span>商家配送 / 分钟送达 / {{shangpu[datas.detail].piecewise_agent_fee.tips}}</span>
+          <span>商家配送 / 分钟送达 / {{shangpinDetail.piecewise_agent_fee.tips}}</span>
           <br />公告：
-          <span>{{shangpu[datas.detail].promotion_info}}</span>
+          <span>{{shangpinDetail.promotion_info}}</span>
         </div>
         <img style="width:5%" src="../../static/img/you.png" alt />
       </div>
@@ -112,7 +112,7 @@
         <!-- 价钱 -->
         <div id="price">
           <p id="price_A">￥{{price}}.00</p>
-          <span id="price_B">{{shangpu[datas.detail].piecewise_agent_fee.tips}}</span>
+          <span id="price_B">{{shangpinDetail.piecewise_agent_fee.tips}}</span>
         </div>
         <!-- 起送 结算  传值 价钱，商品数量...  -->
         <!-- <router-link> -->
@@ -210,6 +210,7 @@ export default {
       pjJiekou: "",
       shangpu: [],
       shipin: "",
+      shangpinDetail:'',//获取到的详细商品
       shangpin: true,
       pingjia: false,
       value1: 4.7,
@@ -240,6 +241,21 @@ export default {
       }
       console.log(this.shopshow);
     },
+    // 获取店面信息
+    jiazaiOKtop0() {
+      const api0 =
+        "https://elm.cangdu.org/shopping/restaurant/" +
+        this.datas.id;
+      this.$http({
+        url: api0,
+        method: "get",
+        withCredentials: true //用于表示用户代理是否应该在跨域请求的情况下，从其他域发送cookies---不使用缓存数据（不加这行代码，验证码可能会使用上次的）
+      }).then(res => {
+        console.log(api0);
+        console.log(res.data);
+        this.shangpinDetail = res.data;
+      });
+    },
     // 获取食品列表
     jiazaiOKtop1() {
       const api1 =
@@ -250,25 +266,10 @@ export default {
         method: "get",
         withCredentials: true //用于表示用户代理是否应该在跨域请求的情况下，从其他域发送cookies---不使用缓存数据（不加这行代码，验证码可能会使用上次的）
       }).then(res => {
+        console.log(this.datas.id);
         console.log(api1);
         console.log(res.data);
         this.shipin = res.data;
-      });
-    },
-    jiazaiOKtop2() {
-      const api2 =
-        "https://elm.cangdu.org/shopping/restaurants?latitude=" +
-        this.datas.latitude +
-        "&longitude=" +
-        this.datas.longitude;
-      this.$http({
-        url: api2,
-        method: "get",
-        withCredentials: true //用于表示用户代理是否应该在跨域请求的情况下，从其他域发送cookies---不使用缓存数据（不加这行代码，验证码可能会使用上次的）
-      }).then(response => {
-        console.log(api2);
-        //  console.log(response.data);
-        this.shangpu = response.data;
       });
     },
     // 获取评价
@@ -301,14 +302,6 @@ export default {
       shangpinA.style.color = "black";
       pingjiaA.style.color = "blue";
     },
-    changeColor() {
-      // var spans = document.querySelectorAll('.span1');
-      // for(let i=0;i<11;i++){
-      // console.log(spans);
-      // spans[i].style.backgroundColor = "rgb(235, 245, 255)";
-      // }
-      // this.style.backgroundColor = "blue";
-    },
     // 添加食品到购物车
     addFood(a, i, index) {
       this.shipin[i].foods[index].specfoods[0].original_price += a; //单个菜品总价
@@ -326,43 +319,14 @@ export default {
       this.foodCount -= 1; //总个数
       this.price -= a; //总价
     }
-    //结算
-    // 订单不用写
-    // jiesuan() {
-    //   if (this.price != 0) {
-    //     this.$refs.js.style.backgroundColor = "blue";
-    //     this.$refs.js.innerHTML = "去结算";
-    //   } else {
-    //     this.$refs.js.style.backgroundColor = "gray";
-    //     this.$refs.js.innerHTML =
-    //       "还差￥{{shangpu[datas.detail].float_minimum_order_amount}}起送";
-    //   }
-    // this.$router.push({
-    //   name: "dingdan",
-    //   query: {
-    //     price: this.price
-    //   }
-    // });
-    // }
-  },
-  mounted() {
-    // let maodian = this.GetQueryString("anchor"); //进入页面，如果带有锚点参数，则跳转至锚点地方，参数值就是id名
-    // if (maodian) {
-    //   console.log(maodian);
-    //   this.goAnchor("#" + maodian);
-    // }
   },
   created() {
     // this.datas = this.$route.query.datas;//waimai传过来的坐标和店面名称
     // 上一个页面传来的数据（坐标）
     console.log(this.$route.query);
     this.datas = this.$route.query;
-    if(this.datas.detail == null){
-      this.$set(datas,'detail',0)
-    }
-    // this.getParmas();
+    this.jiazaiOKtop0();
     this.jiazaiOKtop1();
-    this.jiazaiOKtop2();
     this.getPingjia();
     var shangpinA = document.getElementById("shangpinA");
     var pingjiaA = document.getElementById("pingjiaA");
