@@ -11,7 +11,7 @@
         </li>
         <li>
           <router-link to="/search">
-            <img src="../../static/img/searchT.png" alt="">
+            <img src="../../static/img/zhinanzhen1.png" alt="">
             <P style="font-size:0.1rem;color:grey;">搜索</P>
           </router-link>
         </li>
