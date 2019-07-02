@@ -8,7 +8,7 @@
         <div id="two">
             <ul>
                 <li>
-                    <img src="../../../static/img/icon_客服.png" alt="">
+                    <img src="../../../static/img/客服 (1).png" alt="">
                     <p>在线客服</p>
                     </li>
                 <li>

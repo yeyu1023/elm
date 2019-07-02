@@ -11,9 +11,9 @@
         </li>
         <li>
           <router-link to="/search">
-            <img src="../../static/img/zhinanzhen.png" alt>
-          </router-link>
+            <img src="../../static/img/指南针 (6).png" alt>
           <P style="font-size:0.1rem;color:grey;">搜索</P>
+          </router-link>
         </li>
         <li>
           <router-link to="/dingdan">
@@ -77,7 +77,6 @@
         <div class="swiper-scrollbar" slot="scrollbar"></div>
       </swiper>
     </div>
-
     <!-- 下面商铺部分 -->
     <div id="sps_top">
       <img src="../../static/img/Group-.png">附近商家

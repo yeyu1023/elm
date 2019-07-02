@@ -2,9 +2,9 @@
     <div id="containter" style="backgroundColor:red;">
         <div id="money">
             <ul>
-                <li>有{{$store.state.discounts}}个红包即将过期</li>
+                <li style="margin-top:3%;">有{{$store.state.discounts}}个红包即将过期</li>
                 
-                    <li><router-link to="/hongbao">?红包说明</router-link></li>
+                    <li style="margin-top:3%;"><router-link to="/hongbao">?红包说明</router-link></li>
                 
             </ul>
         </div>
@@ -147,11 +147,10 @@ export default {
         //response返回请求的数据
         //请求成功后的回调函数
         console.log("成功");
-        console.log(response.data[0]); //返回请求到的数据
+        console.log(response.data); //返回请求到的数据
         this.cont = response.data[0]
          this.cont1 = response.data[1]
           this.cont2 = response.data[2]
-         
       });
     }
     }
@@ -170,8 +169,8 @@ export default {
         /* margin-left: 3%; */
         width: 100%;
         /* border: 1px solid black; */
-        width: 95%;
-        margin-left: 3%;
+        width: 96%;
+        margin-left: 1%;
         background-color: #fff;
         border-radius: 5%;
         /* margin-bottom: 5%; */
@@ -198,25 +197,25 @@ export default {
 .left,.center,.right{
     float: left;
     width: 15%;
-    padding: 5%;
+    padding: 5% 3%;
 
 }
 .center{
-    width: 41%;
+    width: 45%;
     font-size: 0.05rem;
-    /* border: 1px solid red; */
+    /* border: 1px solid red;*/
     text-align: left;
 }
 .left{
-    padding: 7% 3%;
+    padding: 7% 2%;
     line-height: 0.2rem;
     border-right: 1px solid gainsboro;
-    width: 18%;
+    width: 20%;
 }
 .right{
     text-align: right;
     font-size: 0.15rem;
-    width: 12%;
+    width: 11%;
     /* border: 1px solid red; */
     float: right;
 }
@@ -250,6 +249,7 @@ export default {
 font-size: 0.1rem;
 color: black;
 float: left;
+margin-top: 3%; 
 
 }
 #money ul li:nth-child(1),#bot p:nth-child(1){

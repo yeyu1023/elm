@@ -40,7 +40,7 @@
              <p>{{cont.description_map.phone}}</p>
            </div>
            <div class="right">
-               <p style="color:grey;">{{cont.description_map.validity_delta}}</p>
+               <p style="color:grey;">已过期</p>
            </div>
            
         </div>
@@ -78,7 +78,7 @@
              <p>{{cont1.description_map.phone}}</p>
            </div>
            <div class="right">
-               <p style="color:grey;">{{cont1.description_map.validity_delta}}</p>
+               <p style="color:grey;">已过期</p>
            </div>
            <div class="bottom">
                <p style="color:grey;">{{cont1.limit_map.restaurant_flavor_ids}}</p>
@@ -118,7 +118,7 @@
              <p>{{cont2.description_map.phone}}</p>
            </div>
            <div class="right">
-               <p style="color:grey;">{{cont.description_map.validity_delta}}</p>
+               <p style="color:grey;">已过期</p>
            </div>
            <div class="bottom" style="color: rgb(184, 182, 182);">
                <p style="color:grey;">{{cont2.limit_map.restaurant_flavor_ids}}</p>
@@ -158,7 +158,7 @@
              <p>{{cont3.description_map.phone}}</p>
            </div>
            <div class="right">
-               <p style="color:grey;">{{cont3.description_map.validity_delta}}</p>
+               <p style="color:grey;">已过期</p>
            </div>
            <div class="bottom"><p>{{cont3.limit_map.restaurant_flavor_ids}}</p></div>
         </div>
@@ -233,8 +233,8 @@ margin-bottom: 3%;
         /* margin-left: 3%; */
         width: 100%;
         /* border: 1px solid black; */
-        width: 95%;
-        margin-left: 3%;
+        width: 98%;
+        margin-left: 1%;
         background-color: #fff;
         border-radius: 5%;
         /* margin-bottom: 5%; */
@@ -264,8 +264,8 @@ margin-bottom: 3%;
     }
 .left,.center,.right{
     float: left;
-    width: 15%;
-    padding: 5%;
+    width: 13%;
+    padding: 5% 3%;
 
 }
 .bottom{
@@ -278,20 +278,21 @@ margin-bottom: 3%;
     color: rgb(184, 182, 182);
 }
 .center{
-    width: 41%;
+    width: 45%;
     font-size: 0.05rem;
     /* border: 1px solid red; */
     text-align: left;
+    color: rgb(188, 189, 190)
 }
 .left{
-    padding: 7% 3%;
+    padding: 7% 2%;
     line-height: 0.2rem;
     border-right: 1px solid gainsboro;
-    width: 18%;
+    width: 20%;
 }
 .right{
     text-align: right;
-    font-size: 0.15rem;
+    font-size: 0.1rem;
     width: 12%;
     /* border: 1px solid red; */
     float: right;

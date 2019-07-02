@@ -30,9 +30,8 @@ export default {
 }
 </script>
 <style scoped>
-#top{
-    
-   position: fixed;
+#top{  
+position: fixed;
 width: 100%;
 height: 0.53rem;
 line-height: 0.52rem;
@@ -64,7 +63,7 @@ margin-bottom: 3%;
 #bot{
     background-color: #fff;
     padding: 4% 0;
-     width: 100%;
+    width: 100%;
     position: absolute;
     margin-top: 150%;
 }

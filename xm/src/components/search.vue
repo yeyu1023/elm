@@ -11,7 +11,7 @@
         </li>
         <li>
           <router-link to="/search">
-            <img src="../../static/img/zhinanzhen1.png" alt="">
+            <img src="../../static/img/指南针 (4).png" alt="">
             <P style="font-size:0.1rem;color:grey;">搜索</P>
           </router-link>
         </li>
@@ -294,10 +294,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-* {
-  margin: 0;
-  padding: 0;
-}
 .top {
   position: fixed;
   width: 100%;

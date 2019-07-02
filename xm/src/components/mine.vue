@@ -112,7 +112,7 @@
       </li>
       <li>
        <router-link to="/search">
-        <img src="../../static/img/zhinanzhen.png" alt=""></router-link><P style="font-size:0.1rem;color:grey;">搜索</P>
+        <img src="../../static/img/指南针 (6).png" alt=""></router-link><P style="font-size:0.1rem;color:grey;">搜索</P>
       </li>
       <li>
         <router-link to="/dingdan"><img src="../../static/img/dingdan1.png" alt=""><P style="font-size:0.1rem;color:grey;">订单</P></router-link>

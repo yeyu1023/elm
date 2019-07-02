@@ -91,7 +91,7 @@ export default {
         }).then(res=>{
             const one = [];
             const two = [];
-            // console.log(res.data);
+            console.log(res.data);
             for (let i = 0; i < res.data.length; i++) {
                 if(i<8){
                     one.push(res.data[i]);

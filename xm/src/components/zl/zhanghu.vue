@@ -155,6 +155,7 @@ export default {
      this.$store.state.imgavatar = ''
      this.$store.state.userMsg.gift_amount="0"
       this.$store.state.userMsg.point="0"
+      // this.$store.state.gethongbao = ''
     }
   }
 };
