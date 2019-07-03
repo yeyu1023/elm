@@ -8,7 +8,13 @@
           :src="'https://elm.cangdu.org/img/'+shangpinDetail.image_path"
           alt
         />
-        <img style="width:0.3rem;position:fixed;left:0.01rem;top:0.01rem;" @click="houtui()" id="top_img1" src="../../static/img/back.png" alt />
+        <img
+          style="width:0.3rem;position:fixed;left:0.01rem;top:0.01rem;"
+          @click="houtui()"
+          id="top_img1"
+          src="../../static/img/back.png"
+          alt
+        />
         <span style="color:white;margin-left:2%">{{shangpinDetail.name}}</span>
         <br />
         <div
@@ -58,10 +64,9 @@
       <!-- 右侧食品列表 -->
       <div id="right">
         <div>
+          <div id="ball"></div>
           <div :id="'B'+i" :key="i" v-for="(v,i) in shipin">
-            <div
-              style="height:0.5rem;line-height:0.5rem;font-size:0.1rem;"
-            >
+            <div style="height:0.5rem;line-height:0.5rem;font-size:0.1rem;">
               <span style="font-size:0.2rem;font-weight:bold;">{{v.name}}</span>
               {{v.description}}
             </div>
@@ -79,10 +84,16 @@
                   v-if="value.attributes[1]"
                 >{{value.attributes[1].icon_name}}</span>
                 <br />
-                <span style="margin-top:4px;display:inline-block;font-size:0.1rem;color:rgb(125,125,125);">{{value.description}}</span>
+                <span
+                  style="margin-top:4px;display:inline-block;font-size:0.1rem;color:rgb(125,125,125);"
+                >{{value.description}}</span>
                 <br />
-                <span style="margin-top:4px;display:inline-block;">月售{{value.month_sales}}份 好评率{{value.satisfy_rate}}%</span>
-                <span style="margin-top:4px;display:inline-block;color:red;font-weight:bold;">￥{{value.specfoods[0].price}}</span>
+                <span
+                  style="margin-top:4px;display:inline-block;"
+                >月售{{value.month_sales}}份 好评率{{value.satisfy_rate}}%</span>
+                <span
+                  style="margin-top:4px;display:inline-block;color:red;font-weight:bold;"
+                >￥{{value.specfoods[0].price}}</span>
                 <!-- 添加删减购物车内容  传菜品价钱 -->
                 <div
                   style="float:right;display:inline-block;border-radius:50%;height:0.2rem;text-align:center;color:white;font-size:0.2rem;"
@@ -104,7 +115,22 @@
         </div>
       </div>
       <!-- 底部 -->
-      <div id="bottom">
+      <!-- 购物车 -->
+      <div v-if="shopshow" id="shop">
+        <div class="shop_top">
+          <span>购物车</span>
+          <span>清空</span>
+        </div>
+        <!-- 所选食品列表 -->
+        <div class="list">
+          <span>{{foodCounts.name}}</span>
+          <span>{{foodCounts.count}}</span>
+        </div>
+        <!-- <van-action-sheet v-model="show" title="标题">
+          <p>内容</p>
+        </van-action-sheet>-->
+      </div>
+      <div id="bottom" @click="shop()">
         <div id="bottom_img">
           <img src="../../static/img/gouwuche.png" alt />
           <span>{{foodCount}}</span>
@@ -120,18 +146,6 @@
         <div ref="js" id="js">去结算</div>
         <!-- </router-link> -->
       </div>
-      <!-- 购物车 -->
-      <div v-if="shopshow" id="shop">
-        <div class="shop_top">
-          <span>购物车</span>
-          <span>清空</span>
-        </div>
-        <!-- 所选食品列表 -->
-        <div class="list">
-          <span>{{foodCounts.name}}</span>
-          <span>{{foodCounts.count}}</span>
-        </div>
-      </div>
     </div>
     <!-- 评价 -->
     <div id="pingjia" v-if="pingjia">
@@ -143,12 +157,26 @@
           <span style="font-size:0.1rem;">高于周边商家76.9%</span>
         </div>
         <div id="pingjia_top_right" style="margin-left:1rem;">
-          <span style="font-size:0.13rem;line-height:0.2rem;display:inline-block;margin-top:0.1rem;">服务态度</span>
-          <van-rate style="display:inline-block;line-height:0.22rem;" v-model="value1" size="10px" allow-half="true" />
-          <span style="color:orange;"> {{value1}}</span><br>
+          <span
+            style="font-size:0.13rem;line-height:0.2rem;display:inline-block;margin-top:0.1rem;"
+          >服务态度</span>
+          <van-rate
+            style="display:inline-block;line-height:0.22rem;"
+            v-model="value1"
+            size="10px"
+            allow-half="true"
+          />
+          <span style="color:orange;">{{value1}}</span>
+          <br />
           <span style="font-size:0.13rem;line-height:0.2rem;">菜品评价</span>
-          <van-rate style="display:inline-block;line-height:0.22rem;" v-model="value2"  size="10px" allow-half="true" />
-          <span style="color:orange;"> {{value1}}</span><br>
+          <van-rate
+            style="display:inline-block;line-height:0.22rem;"
+            v-model="value2"
+            size="10px"
+            allow-half="true"
+          />
+          <span style="color:orange;">{{value1}}</span>
+          <br />
           <span style="display:inline-block;line-height:0.22rem;">送达时间</span>
           <span style="font-size:0.05rem;">分钟</span>
         </div>
@@ -156,17 +184,17 @@
       <!-- 全部，满意，不满意，有图，味道好。。。 -->
       <div id="pjContent">
         <div id="pjC">
-          <span class="span1" @click="changeColor()">全部(473)</span>
-          <span class="span1" @click="changeColor()">满意(453)</span>
-          <span class="span1" @click="changeColor()">不满意(20)</span>
-          <span class="span1" @click="changeColor()">有图(2)</span>
-          <span class="span1" @click="changeColor()">味道好(47)</span>
-          <span class="span1" @click="changeColor()">(送货快)</span>
-          <span class="span1" @click="changeColor()">分量足(18)</span>
-          <span class="span1" @click="changeColor()">包装精美(15)</span>
-          <span class="span1" @click="changeColor()">干净卫生(15)</span>
-          <span class="span1" @click="changeColor()">食材新鲜(1)</span>
-          <span class="span1" @click="changeColor()">服务不错(11)</span>
+          <span :style="{backgroundColor:changeColorBool[0]}" @click="changeColor(0)">全部(473)</span>
+          <span :style="{backgroundColor:changeColorBool[1]}" @click="changeColor(1)">满意(453)</span>
+          <span :style="{backgroundColor:changeColorBool[2]}" @click="changeColor(2)">不满意(20)</span>
+          <span class="span1" @click="changeColor(3)">有图(2)</span>
+          <span class="span1" @click="changeColor(4)">味道好(47)</span>
+          <span class="span1" @click="changeColor(5)">(送货快)</span>
+          <span class="span1" @click="changeColor(6)">分量足(18)</span>
+          <span class="span1" @click="changeColor(7)">包装精美(15)</span>
+          <span class="span1" @click="changeColor(8)">干净卫生(15)</span>
+          <span class="span1" @click="changeColor(9)">食材新鲜(1)</span>
+          <span class="span1" @click="changeColor(10)">服务不错(11)</span>
         </div>
         <!-- 评价列表 -->
         <div id="pjList">
@@ -176,17 +204,19 @@
             </div>
             <div class="pjList_right">
               <span>{{v.username}}</span>
-              <span style="float:right;">{{v.rated_at}}</span>
-              <br />
-              <el-rate v-model="pingfen" disabled text-color="#ff9900" style="display:inline"></el-rate>
+              <span style="float:right;font-size:0.1rem;">{{v.rated_at}}</span><br />
+              <van-rate
+                style="display:inline-block;line-height:0.22rem;"
+                v-model="pingfen"
+                size="10px"
+                allow-half="true"
+              />
               <br />
               <br />
               <!-- 已购餐品名称 -->
-              <span
-                style="width:5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"
-                :key="index"
-                v-for="(value,index) in v.item_ratings"
-              >{{value.food_name}}</span>
+              <span :key="index" v-for="(value,index) in v.item_ratings" style="width:0.5rem;display:inline-block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
+                {{value.food_name}}
+              </span>
             </div>
           </div>
         </div>
@@ -208,7 +238,7 @@ export default {
       pjJiekou: "",
       shangpu: [],
       shipin: "",
-      shangpinDetail:'',//获取到的详细商品
+      shangpinDetail: "", //获取到的详细商品
       shangpin: true,
       pingjia: false,
       value1: 4.7,
@@ -220,10 +250,19 @@ export default {
       prices: [], //
       colors: ["#99A9BF", "#F7BA2A", "#FF9900"], // 等同于 { 2: '#99A9BF', 4: { value: '#F7BA2A', excluded: true }, 5: '#FF9900' }
       shopshow: false, //购物车显示与否
-      yangshi: -1 //改变商品栏目的样式
+      yangshi: -1, //改变商品栏目的样式
+      show: false,
+      changeColorBool:['rgb(235, 245, 255)','rgb(235, 245, 255)','rgb(235, 245, 255)','rgb(235, 245, 255)','rgb(235, 245, 255)','rgb(235, 245, 255)','rgb(235, 245, 255)','rgb(235, 245, 255)','rgb(235, 245, 255)','rgb(235, 245, 255)'],
     };
   },
   methods: {
+    //改变评价类型背景色
+    changeColor(a){
+      for(let i=0;i<11;i++){
+        this.$set(this.changeColorBool,i,'rgb(235, 245, 255)');
+      }
+      this.$set(this.changeColorBool,a,'rgb(49, 144, 232)');
+    },
     // goAnchor, //方法
     // GetQueryString, //方法
     // 点击商品栏目改变样式
@@ -242,8 +281,7 @@ export default {
     // 获取店面信息
     jiazaiOKtop0() {
       const api0 =
-        "https://elm.cangdu.org/shopping/restaurant/" +
-        this.datas.id;
+        "https://elm.cangdu.org/shopping/restaurant/" + this.datas.id;
       this.$http({
         url: api0,
         method: "get",
@@ -319,6 +357,18 @@ export default {
     }
   },
   created() {
+    // var ball = document.getElementById("ball");
+    // document.body.onclick = function(evt) {
+    //   console.log(evt.pageX, evt.pageY);
+    //   ball.style.top = evt.pageY + "px";
+    //   ball.style.left = evt.pageX + "px";
+    //   ball.style.transition = "left 0s, top 0s";
+    //   setTimeout(() => {
+    //     ball.style.top = window.innerHeight + "px";
+    //     ball.style.left = "0px";
+    //     ball.style.transition = "left 1s linear, top 1s ease-in";
+    //   }, 20);
+    // };
     // this.datas = this.$route.query.datas;//waimai传过来的坐标和店面名称
     // 上一个页面传来的数据（坐标）
     console.log(this.$route.query);
@@ -337,6 +387,14 @@ export default {
   text-align: left;
   color: black;
 }
+#ball {
+  width: 12px;
+  height: 12px;
+  background: #5ea345;
+  border-radius: 50%;
+  position: fixed;
+  transition: left 1s linear, top 1s ease-in;
+}
 #top {
   width: 100%;
   /* border: 1px solid black; */
@@ -344,7 +402,7 @@ export default {
   top: 0;
   left: 0;
   background-color: rgb(168, 173, 182);
-  
+
   padding: 0.1rem;
   color: black;
   box-sizing: border-box;
@@ -505,19 +563,21 @@ export default {
   /* border: 1px solid black; */
 }
 #pjC {
-  border-top: 1px solid rgb(102, 87, 87);
+  border-top: 1px solid rgb(155, 141, 141);
   background-color: white;
   margin-top: 3px;
   overflow: hidden;
 }
 #pjC span {
   background-color: rgb(235, 245, 255);
-  padding: 0.04rem;
+  padding: 0.1rem;
   border-radius: 10% 10% 10% 10% / 10% 10% 10% 10%;
-  margin-right: 0.3rem;
-  margin-bottom: 0.1rem;
+  margin: 0.05rem 0.1rem;
   float: left;
   box-sizing: border-box;
+}
+.span1{
+  background-color: blue;
 }
 #pjC span:nth-child(3) {
   background-color: rgb(245, 245, 245);
@@ -534,7 +594,7 @@ export default {
 }
 .pjList_right {
   float: right;
-  /* width: 80%; */
+  width: 80%;
   display: inline-block;
   /* border: 1px solid black; */
   /* height: 0.8rem; */
@@ -543,11 +603,17 @@ export default {
 #shop {
   position: fixed;
   left: 0;
-  bottom: 0.4rem;
+  bottom: 0.9rem;
   width: 100%;
   background-color: white;
 }
 .list {
   height: 0.02rem;
+}
+.shop_top {
+  width: 100%;
+  font-size: 0.2rem;
+  background-color: rgb(218, 216, 216);
+  color: black;
 }
 </style>
