@@ -8,6 +8,8 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css'
 import Rate from 'vant';
 import 'vant/lib/Rate/style';
+import { ActionSheet } from 'vant';
+
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 // require styles
 import 'swiper/dist/css/swiper.css'
@@ -17,6 +19,7 @@ Vue.use(VueAwesomeSwiper, /* { default global options } */)
 Vue.use(VueAxios, axios)
 Vue.use(ElementUI);
 Vue.use(Rate);
+Vue.use(ActionSheet);
 
 
 // 、、导入vuex封装的模块，store文件夹下的index.js
