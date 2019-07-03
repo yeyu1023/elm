@@ -186,15 +186,15 @@
         <div id="pjC">
           <span :style="{backgroundColor:changeColorBool[0]}" @click="changeColor(0)">全部(473)</span>
           <span :style="{backgroundColor:changeColorBool[1]}" @click="changeColor(1)">满意(453)</span>
-          <span :style="{backgroundColor:changeColorBool[2]}" @click="changeColor(2)">不满意(20)</span>
-          <span class="span1" @click="changeColor(3)">有图(2)</span>
-          <span class="span1" @click="changeColor(4)">味道好(47)</span>
-          <span class="span1" @click="changeColor(5)">(送货快)</span>
-          <span class="span1" @click="changeColor(6)">分量足(18)</span>
-          <span class="span1" @click="changeColor(7)">包装精美(15)</span>
-          <span class="span1" @click="changeColor(8)">干净卫生(15)</span>
-          <span class="span1" @click="changeColor(9)">食材新鲜(1)</span>
-          <span class="span1" @click="changeColor(10)">服务不错(11)</span>
+          <span >不满意(20)</span>
+          <span :style="{backgroundColor:changeColorBool[2]}" @click="changeColor(2)">有图(2)</span>
+          <span :style="{backgroundColor:changeColorBool[3]}" @click="changeColor(3)">味道好(47)</span>
+          <span :style="{backgroundColor:changeColorBool[4]}" @click="changeColor(4)">(送货快)</span>
+          <span :style="{backgroundColor:changeColorBool[5]}" @click="changeColor(5)">分量足(18)</span>
+          <span :style="{backgroundColor:changeColorBool[6]}" @click="changeColor(6)">包装精美(15)</span>
+          <span  :style="{backgroundColor:changeColorBool[7]}" @click="changeColor(7)">干净卫生(15)</span>
+          <span  :style="{backgroundColor:changeColorBool[8]}" @click="changeColor(8)">食材新鲜(1)</span>
+          <span  :style="{backgroundColor:changeColorBool[9]}" @click="changeColor(9)">服务不错(11)</span>
         </div>
         <!-- 评价列表 -->
         <div id="pjList">
@@ -258,7 +258,7 @@ export default {
   methods: {
     //改变评价类型背景色
     changeColor(a){
-      for(let i=0;i<11;i++){
+      for(let i=0;i<10;i++){
         this.$set(this.changeColorBool,i,'rgb(235, 245, 255)');
       }
       this.$set(this.changeColorBool,a,'rgb(49, 144, 232)');
