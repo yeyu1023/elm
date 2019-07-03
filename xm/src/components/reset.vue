@@ -1,9 +1,9 @@
-<template>
+﻿<template>
     <div>
         <div id="top">
      <strong> <h2 style="text-align: center;">重置密码</h2></strong>
     <router-link to="/register">
-    <img id="return" src="../assets/微信图片_20190619195242.png" alt="">
+    <img id="return" src="../../static/img/back.png" alt="">
     </router-link>
     </div>
     <div id="inp">
@@ -103,7 +103,7 @@ margin-bottom: 5vh;
  position: absolute;
  left: 3%;
  top: 15%;
- width: 5%;
+ width: 8%;
   color: white;
 }
 #inp{
@@ -113,7 +113,7 @@ margin-bottom: 5vh;
 }
 #inp input{
     width: 100%;
-    padding: 3%;
+    padding: 3% 0;
     font-size: 0.15rem;
     border: 1px solid gainsboro ;
 }
@@ -121,7 +121,7 @@ margin-bottom: 5vh;
   font-size: 0.1rem;   
   position: absolute;
   right: 2%;
-  top: 60%;
+  top: 38%;
   margin-bottom: 3%;
 }
 #yanzheng{
@@ -135,7 +135,7 @@ margin-bottom: 5vh;
 #yes{
    width: 100%;
    background-color: blue; 
-   padding: 3%;
+   padding: 3% 0;
    
    margin-top: 5%;
 }

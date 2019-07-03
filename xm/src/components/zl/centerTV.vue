@@ -1,4 +1,4 @@
-<template>
+﻿<template>
     <div>
          <div id="top">
             <img @click="ret()" src="../../../static/img/back.png" alt="">
@@ -7,10 +7,10 @@
         </div>
         <div id="content">
             <ul>
-                <li>
+                <!-- <li>
                     <img src="../../../static/img/6 (2).jpeg" alt="">
             <p v-html="this.$route.query.serivers"></p>
-                </li>
+                </li> -->
                 <li>
                     <img src="../../../static/img/6 (2).jpeg" alt="">
             <p> ## 2. 光线 尽量选择明亮、柔和的光线，避免强光直射；拍摄时避免身体或器物的阴影遮住食物本身，有条件时，可以用小型手电进行补光，以提高食物质感。</p>

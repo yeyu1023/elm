@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div>
     <div id="top">
       <router-link to="/mine">
@@ -61,12 +61,15 @@
       <span id="divspan">请在手机APP中设置</span><br>
       <span @click="sure()" id="divspan1" >确认</span>
     </div>
-    <div class="animated heartBeat 2s" v-if="yes" id="div2">
+   
+      <div class="animated heartBeat 2s" v-if="yes" id="div2">
+       
       <img id="divimg" src="../../../static/img/警告.png" alt><br>
-      <span id="divspan">你确定退出登陆吗？</span><br>
-      <span @click="over()" id="divspan2">确认</span>
-      <span @click="sure4()" id="divspan3">取消</span>
+      <span id="divspan">是否退出登录</span><br>
+      <span @click="sure4()" id="divspan3">再等等</span>
+      <span @click="over()" id="divspan2">退出登录</span>
     </div>
+    <div id="big" v-if="yes"></div>
   </div>
 </template>
 <script>
@@ -194,15 +197,30 @@ export default {
   overflow: hidden;
   margin-top: 12%;
 }
+#big{
+  width: 100%;
+  height: 92vh;
+  background-color: rgb(211, 207, 207);
+  position: absolute;
+  left: 0;
+  top: 8%;
+  opacity: 0.5;
+}
 #div1,#div2 {
   width: 80%;
-  margin-left: 10%;
+  margin-left: 5%;
   border: 1px solid gainsboro;
   position: absolute;
-  top:30%;
-  background-color: #fff;
+  top:20%;
+  background-color: rgb(231, 231, 231);
   border-radius: 5%;
   overflow: hidden;
+}
+#div2{
+  width: 95%;
+  margin-left: 2.5%;
+  background-color: #fff;
+  z-index: 10;
 }
 #ul1 li {
   /* padding: 4% 0 0 0; */
@@ -215,28 +233,40 @@ export default {
 }
 #divimg{
   width: 30%;
-  margin-left: 0%;
-  margin-top: 3%;
+  margin-top: 6%;
 }
 #divspan{
- line-height: 0.3rem;
+ line-height: 0.5rem;
  color: grey;
   margin-left: 5%;
+  font-size: 0.25rem;
+  font-weight: bold;
+  margin-top: 10%;
 }
 #divspan1{
   display: inline-block;
- margin-top: 4%;
+ margin-top: 5%;
   width: 100%;
   background-color: rgb(165, 236, 117);
-  padding: 5% 0;
+  padding: 8% 0;
 }
 #divspan2,#divspan3{
   /* float: left; */
   display: inline-block;
- margin-top: 4%;
-  width: 50%;
+ margin-top: 15%;
+  width: 20%;
   background-color: rgb(165, 236, 117);
-  padding: 5% 0;
+  padding: 3% 0;
+  border-radius: 10% 10% 10% 10%/20% 20% 20% 20%;
+ 
+}
+#divspan2{
+  background-color: rgb(252, 88, 88);
+  border: 1px solid gainsboro;
+ margin-bottom: 10%;
+}
+#divspan3{
+  background-color: rgb(202, 198, 198);
 }
 #ul1 li p {
   margin-left: 3%;

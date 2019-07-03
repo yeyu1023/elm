@@ -1,7 +1,7 @@
-<template>
+﻿<template>
     <div>
        <div id="top">
-            <router-link to="/zhanghu"><img src="../../../static/img/微信图片_20190619195242.png" alt=""></router-link>
+            <router-link to="/zhanghu"><img src="../../../static/img/back.png" alt=""></router-link>
             <p>修改用户名</p>
             
         </div>
@@ -35,7 +35,7 @@ top: 0;
 margin-bottom: 3%;  
 }
 #top img{
-    width: 5%;
+    width: 8%;
     padding: 3% 0;
     float: left;
     margin-left: 2%;
