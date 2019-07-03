@@ -64,7 +64,6 @@
       <!-- 右侧食品列表 -->
       <div id="right">
         <div>
-          <div id="ball"></div>
           <div :id="'B'+i" :key="i" v-for="(v,i) in shipin">
             <div style="height:0.5rem;line-height:0.5rem;font-size:0.1rem;">
               <span style="font-size:0.2rem;font-weight:bold;">{{v.name}}</span>
@@ -357,18 +356,6 @@ export default {
     }
   },
   created() {
-    // var ball = document.getElementById("ball");
-    // document.body.onclick = function(evt) {
-    //   console.log(evt.pageX, evt.pageY);
-    //   ball.style.top = evt.pageY + "px";
-    //   ball.style.left = evt.pageX + "px";
-    //   ball.style.transition = "left 0s, top 0s";
-    //   setTimeout(() => {
-    //     ball.style.top = window.innerHeight + "px";
-    //     ball.style.left = "0px";
-    //     ball.style.transition = "left 1s linear, top 1s ease-in";
-    //   }, 20);
-    // };
     // this.datas = this.$route.query.datas;//waimai传过来的坐标和店面名称
     // 上一个页面传来的数据（坐标）
     console.log(this.$route.query);
@@ -386,14 +373,6 @@ export default {
 .hello {
   text-align: left;
   color: black;
-}
-#ball {
-  width: 12px;
-  height: 12px;
-  background: #5ea345;
-  border-radius: 50%;
-  position: fixed;
-  transition: left 1s linear, top 1s ease-in;
 }
 #top {
   width: 100%;
